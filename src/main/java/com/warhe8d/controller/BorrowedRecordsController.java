@@ -4,12 +4,14 @@ import com.warhe8d.models.BorrowRecord;
 import com.warhe8d.service.BorrowRecordService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/lib/bb")
+@PreAuthorize("hasAnyRole('ADMIN','LIBRARIAN','MEMBER')")
 public class BorrowedRecordsController {
 
     private final BorrowRecordService brService;
@@ -35,6 +37,7 @@ public class BorrowedRecordsController {
         }
         return new ResponseEntity<>("Record not found", HttpStatus.NOT_FOUND);
     }
+
 
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateBorrowRecord(@PathVariable long id, @RequestBody BorrowRecord br) {

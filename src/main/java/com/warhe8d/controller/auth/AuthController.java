@@ -3,7 +3,7 @@ package com.warhe8d.controller.auth;
 import com.warhe8d.requestbody.AuthReqBody;
 import com.warhe8d.requestbody.AuthResponse;
 import com.warhe8d.requestbody.RegisterReqBody;
-import com.warhe8d.service.AuthService;
+import com.warhe8d.service.auth.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -4,6 +4,7 @@ import com.warhe8d.models.LibraryMember;
 import com.warhe8d.service.LibraryMemberService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -19,6 +20,7 @@ public class LibraryMemberController {
     }
 
     @PostMapping("/register")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<?> register(@RequestBody LibraryMember libraryMember) {
         Optional<LibraryMember> member = libraryMemberService.registerMember(libraryMember);
         if(member.isPresent()) {
@@ -28,6 +30,7 @@ public class LibraryMemberController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN','LIBRARIAN')")
     public ResponseEntity<?> getMember(@PathVariable long id) {
         Optional<LibraryMember> lm = libraryMemberService.getMemberById(id);
         if(lm.isPresent()) {
@@ -37,6 +40,7 @@ public class LibraryMemberController {
     }
 
     @PutMapping("/update/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<?> update(@PathVariable long id, @RequestBody LibraryMember libraryMember) {
         Optional<LibraryMember> member = libraryMemberService.updateMember(id,libraryMember);
         if(member.isPresent()) {
@@ -46,6 +50,7 @@ public class LibraryMemberController {
     }
 
     @DeleteMapping("/delete/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<?> delete(@PathVariable long id) {
         int deleteMember = libraryMemberService.deleteMember(id);
         if(deleteMember == 1) {

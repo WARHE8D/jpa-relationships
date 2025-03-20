@@ -4,12 +4,14 @@ import com.warhe8d.models.Author;
 import com.warhe8d.service.AuthorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/lib/author")
+@PreAuthorize("hasAnyRole('ADMIN','LIBRARIAN')")
 public class AuthorController {
 
     private final AuthorService authorService;

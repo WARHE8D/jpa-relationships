@@ -1,4 +1,4 @@
-package com.warhe8d.service;
+package com.warhe8d.service.auth;
 
 import com.warhe8d.requestbody.AuthReqBody;
 import com.warhe8d.requestbody.AuthResponse;

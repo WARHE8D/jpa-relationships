@@ -4,12 +4,14 @@ import com.warhe8d.models.Book;
 import com.warhe8d.service.BookService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/lib/book")
+@PreAuthorize("hasAnyRole('ADMIN','LIBRARIAN')")
 public class BookController {
     private final BookService bookService;
     public BookController(BookService bookService) {

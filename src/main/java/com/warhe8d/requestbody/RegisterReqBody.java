@@ -1,5 +1,6 @@
 package com.warhe8d.requestbody;
 
+import com.warhe8d.roles.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -11,9 +12,7 @@ import lombok.NoArgsConstructor;
 public class RegisterReqBody {
     private String username;
     private String password;
-    private String firstname;
-    private String lastname;
-    private String email;
+    private Role role;
 
     public String getUsername() {
         return username;
@@ -31,27 +30,11 @@ public class RegisterReqBody {
         this.password = password;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public Role getRole() {
+        return role;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
